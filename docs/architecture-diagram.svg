@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+  <defs>
+    <style>
+      .bg { fill: #f5f7fb; }
+      .title { font: 700 34px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #475569; }
+      .section-title { font: 700 20px Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 18px Arial, sans-serif; fill: #0f172a; }
+      .small { font: 400 14px Arial, sans-serif; fill: #475569; }
+      .tiny { font: 400 12px Arial, sans-serif; fill: #64748b; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 14; }
+      .aws { fill: #fff7ed; stroke: #fb923c; stroke-width: 2; rx: 14; }
+      .security { fill: #ecfdf5; stroke: #22c55e; stroke-width: 2; rx: 14; }
+      .devops { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; rx: 14; }
+      .monitor { fill: #fefce8; stroke: #eab308; stroke-width: 2; rx: 14; }
+      .network { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; rx: 18; }
+      .private { fill: #eef2ff; stroke: #6366f1; stroke-width: 2; stroke-dasharray: 8 6; rx: 18; }
+      .public { fill: #ecfeff; stroke: #06b6d4; stroke-width: 2; stroke-dasharray: 8 6; rx: 18; }
+      .arrow { stroke: #334155; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-blue { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-green { stroke: #16a34a; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-green); }
+      .line { stroke: #cbd5e1; stroke-width: 2; fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#334155"/>
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1050"/>
+
+  <text class="title" x="70" y="65">Cloud-Based Secure Task Manager - DevSecOps Architecture</text>
+  <text class="subtitle" x="70" y="96">Secure Flask application deployed on AWS with Docker, CI/CD, monitoring, logging, backups, and role-based access control.</text>
+
+  <!-- External User -->
+  <rect class="box" x="70" y="150" width="240" height="110"/>
+  <text class="label" x="105" y="190">User / Admin</text>
+  <text class="small" x="105" y="218">Browser access</text>
+  <text class="small" x="105" y="240">HTTPS requests</text>
+  <circle cx="275" cy="194" r="24" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="264" y="202" font-family="Arial" font-size="24" font-weight="700" fill="#2563eb">U</text>
+
+  <!-- DNS / Edge -->
+  <rect class="aws" x="390" y="135" width="270" height="140"/>
+  <text class="section-title" x="425" y="175">DNS &amp; Entry Point</text>
+  <text class="label" x="425" y="208">Route 53 / Domain</text>
+  <text class="small" x="425" y="235">Maps domain to ALB</text>
+  <text class="small" x="425" y="257">Optional ACM TLS certificate</text>
+
+  <rect class="aws" x="750" y="135" width="280" height="140"/>
+  <text class="section-title" x="785" y="175">Load Balancing</text>
+  <text class="label" x="785" y="208">Application Load Balancer</text>
+  <text class="small" x="785" y="235">HTTP/HTTPS listener</text>
+  <text class="small" x="785" y="257">Health checks to EC2</text>
+
+  <!-- AWS VPC -->
+  <rect class="network" x="70" y="335" width="1460" height="530"/>
+  <text class="section-title" x="105" y="375">AWS VPC: secure-task-vpc (10.0.0.0/16)</text>
+
+  <!-- Public subnet -->
+  <rect class="public" x="105" y="410" width="610" height="390"/>
+  <text class="section-title" x="135" y="448">Public Subnet</text>
+  <text class="tiny" x="135" y="472">Internet-facing resources and controlled ingress</text>
+
+  <rect class="aws" x="155" y="510" width="250" height="120"/>
+  <text class="label" x="185" y="548">Internet Gateway</text>
+  <text class="small" x="185" y="577">Public internet access</text>
+  <text class="small" x="185" y="600">Route table: 0.0.0.0/0</text>
+
+  <rect class="aws" x="455" y="510" width="220" height="120"/>
+  <text class="label" x="485" y="548">Security Group</text>
+  <text class="small" x="485" y="577">Allow 80 / 443</text>
+  <text class="small" x="485" y="600">Restrict SSH to user IP</text>
+
+  <!-- Private subnet -->
+  <rect class="private" x="775" y="410" width="710" height="390"/>
+  <text class="section-title" x="805" y="448">Private Subnet</text>
+  <text class="tiny" x="805" y="472">Application and database resources isolated from public access</text>
+
+  <rect class="aws" x="825" y="505" width="290" height="150"/>
+  <text class="label" x="855" y="543">EC2 Ubuntu Server</text>
+  <text class="small" x="855" y="570">Docker runtime</text>
+  <text class="small" x="855" y="592">Nginx reverse proxy</text>
+  <text class="small" x="855" y="614">UFW, fail2ban, SSH hardening</text>
+
+  <rect class="devops" x="1180" y="495" width="250" height="170"/>
+  <text class="label" x="1210" y="533">Dockerized Flask App</text>
+  <text class="small" x="1210" y="560">Secure Task Manager</text>
+  <text class="small" x="1210" y="582">Gunicorn / Flask service</text>
+  <text class="small" x="1210" y="604">Health endpoint: /health</text>
+  <text class="small" x="1210" y="626">Task CRUD + attachments</text>
+
+  <rect class="aws" x="825" y="700" width="255" height="95"/>
+  <text class="label" x="855" y="738">RDS Database</text>
+  <text class="small" x="855" y="765">MySQL / PostgreSQL</text>
+  <text class="small" x="855" y="785">Private access only</text>
+
+  <rect class="aws" x="1135" y="700" width="295" height="95"/>
+  <text class="label" x="1165" y="738">S3 Bucket</text>
+  <text class="small" x="1165" y="765">Attachments, media, backups</text>
+  <text class="small" x="1165" y="785">Encryption + versioning</text>
+
+  <!-- DevOps pipeline -->
+  <rect class="devops" x="70" y="905" width="380" height="105"/>
+  <text class="section-title" x="105" y="945">GitHub Repository</text>
+  <text class="small" x="105" y="973">Source code, Dockerfile, README, docs</text>
+
+  <rect class="devops" x="520" y="905" width="360" height="105"/>
+  <text class="section-title" x="555" y="945">GitHub Actions CI/CD</text>
+  <text class="small" x="555" y="973">Build, test, containerize, deploy to EC2</text>
+
+  <!-- Security controls -->
+  <rect class="security" x="1080" y="905" width="450" height="105"/>
+  <text class="section-title" x="1115" y="945">Application Security Controls</text>
+  <text class="small" x="1115" y="973">bcrypt, RBAC, rate limiting, security headers, ORM, login logs</text>
+
+  <!-- Monitoring -->
+  <rect class="monitor" x="1110" y="320" width="375" height="95"/>
+  <text class="section-title" x="1145" y="360">CloudWatch Monitoring</text>
+  <text class="small" x="1145" y="388">Metrics, logs, alarms, failed-login alerts</text>
+
+  <!-- Backup -->
+  <rect class="monitor" x="455" y="675" width="220" height="95"/>
+  <text class="label" x="485" y="713">Cron Backup</text>
+  <text class="small" x="485" y="740">DB dump + media</text>
+  <text class="small" x="485" y="760">Upload to S3</text>
+
+  <!-- Arrows main traffic -->
+  <path class="arrow" d="M310 205 L390 205"/>
+  <path class="arrow" d="M660 205 L750 205"/>
+  <path class="arrow" d="M890 275 L890 335"/>
+  <path class="arrow" d="M1030 205 C1150 205 1200 265 1200 320"/>
+  <path class="arrow" d="M675 570 C740 570 760 570 825 570"/>
+  <path class="arrow" d="M1115 580 L1180 580"/>
+  <path class="arrow" d="M970 655 L955 700"/>
+  <path class="arrow" d="M1305 665 L1285 700"/>
+
+  <!-- DevOps arrows -->
+  <path class="arrow-blue" d="M450 957 L520 957"/>
+  <path class="arrow-blue" d="M880 957 C980 957 990 780 970 655"/>
+
+  <!-- Security / monitoring arrows -->
+  <path class="arrow-green" d="M1305 905 L1305 665"/>
+  <path class="arrow" d="M1205 495 C1205 450 1205 435 1205 415"/>
+  <path class="arrow" d="M565 675 C565 645 565 630 565 630"/>
+  <path class="arrow" d="M675 720 C820 720 1000 720 1135 745"/>
+
+  <!-- Flow labels -->
+  <text class="tiny" x="325" y="190">HTTPS</text>
+  <text class="tiny" x="690" y="190">DNS target</text>
+  <text class="tiny" x="910" y="315">Traffic enters VPC</text>
+  <text class="tiny" x="710" y="550">Least privilege access</text>
+  <text class="tiny" x="1135" y="560">Reverse proxy</text>
+  <text class="tiny" x="990" y="690">DB queries</text>
+  <text class="tiny" x="1320" y="690">Uploads</text>
+  <text class="tiny" x="910" y="930">Automated deployment</text>
+  <text class="tiny" x="1320" y="835">Security telemetry</text>
+
+  <!-- Footer -->
+  <text class="tiny" x="70" y="1030">Designed for internship capstone submission: AWS Cloud + Networking + Linux Administration + Cybersecurity + DevOps Automation + Monitoring &amp; Logging</text>
+</svg>
