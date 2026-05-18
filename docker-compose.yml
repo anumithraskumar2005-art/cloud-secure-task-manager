@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: secure-task-manager
+    ports:
+      - "5000:5000"
+    environment:
+      - SECRET_KEY=dev-secret-key
+      - DATABASE_URL=sqlite:///secure_task_manager.db
+    volumes:
+      - ./app/static/uploads:/app/app/static/uploads
