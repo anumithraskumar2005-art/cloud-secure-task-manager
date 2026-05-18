@@ -1,0 +1,41 @@
+name: Secure Task Manager CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check Flask app imports
+        run: |
+          python -c "from app import create_app; app = create_app(); print('Flask app created successfully')"
+
+      - name: Build Docker image
+        run: |
+          docker build -t secure-task-manager .
+
+      - name: Run Docker container health check
+        run: |
+          docker run -d -p 5000:5000 --name secure-task-manager-test secure-task-manager
+          sleep 10
+          curl --fail http://127.0.0.1:5000/health
